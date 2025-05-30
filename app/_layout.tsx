@@ -1,29 +1,72 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import Header from "@/components/Header";
+import { Ionicons } from "@expo/vector-icons";
+import { Tabs } from "expo-router";
+import { SafeAreaView, View } from "react-native";
+import { Provider as PaperProvider } from "react-native-paper";
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+import "../global.css";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  if (!loaded) {
-    // Async font loading only occurs in development.
-    return null;
-  }
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <PaperProvider>
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          <Header />
+          <Tabs
+            screenOptions={({ route }) => ({
+              headerShown: false,
+              tabBarActiveTintColor: "#007aff",
+              tabBarInactiveTintColor: "gray",
+              tabBarStyle: {
+                backgroundColor: "#fff",
+                paddingBottom: 5,
+                height: 60,
+              },
+              tabBarIcon: ({ focused, color, size }) => {
+                type IoniconName = React.ComponentProps<
+                  typeof Ionicons
+                >["name"];
+                let iconName: IoniconName;
+
+                switch (route.name) {
+                  case "index":
+                    iconName = focused ? "home" : "home-outline";
+                    break;
+                  case "(tabs)/About":
+                    iconName = focused
+                      ? "information-circle"
+                      : "information-circle-outline";
+                    break;
+                  case "(tabs)/AllDoctors":
+                    iconName = focused ? "people" : "people-outline";
+                    break;
+                  case "(tabs)/Contect":
+                    iconName = focused ? "call" : "call-outline";
+                    break;
+                  default:
+                    iconName = "ellipse";
+                }
+
+                return <Ionicons name={iconName} size={size} color={color} />;
+              },
+            })}
+          >
+            <Tabs.Screen name="index" options={{ title: "Home" }} />
+            <Tabs.Screen
+              name="(tabs)/About"
+              options={{ title: "About", headerShown: false }}
+            />
+            <Tabs.Screen
+              name="(tabs)/AllDoctors"
+              options={{ title: "Doctors", headerShown: false }}
+            />
+            <Tabs.Screen
+              name="(tabs)/Contect"
+              options={{ title: "Contact", headerShown: false }}
+            />
+          </Tabs>
+        </View>
+      </SafeAreaView>
+    </PaperProvider>
   );
 }

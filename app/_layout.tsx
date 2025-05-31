@@ -4,6 +4,7 @@ import { Tabs } from "expo-router";
 import { SafeAreaView, View } from "react-native";
 import { Provider as PaperProvider } from "react-native-paper";
 
+import Toast from "react-native-toast-message";
 import "../global.css";
 
 export default function RootLayout() {
@@ -67,6 +68,7 @@ export default function RootLayout() {
           </Tabs>
         </View>
       </SafeAreaView>
+      <Toast />
     </PaperProvider>
   );
 }

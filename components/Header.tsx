@@ -30,7 +30,7 @@ const Header = () => {
           >
             <Image
               source={require("../assets/images/upload_area.png")}
-              className="w-14 h-14 rounded-full opacity-70"
+              className="w-10 h-10 rounded-full opacity-70"
               resizeMode="cover"
             />
             <Ionicons name="chevron-down" size={22} color="#999" />

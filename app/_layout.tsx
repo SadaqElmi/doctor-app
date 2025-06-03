@@ -33,15 +33,15 @@ export default function RootLayout() {
                   case "index":
                     iconName = focused ? "home" : "home-outline";
                     break;
-                  case "(tabs)/About":
+                  case "About":
                     iconName = focused
                       ? "information-circle"
                       : "information-circle-outline";
                     break;
-                  case "(tabs)/AllDoctors":
+                  case "AllDoctors":
                     iconName = focused ? "people" : "people-outline";
                     break;
-                  case "(tabs)/Contect":
+                  case "Contect":
                     iconName = focused ? "call" : "call-outline";
                     break;
                   default:
@@ -54,15 +54,15 @@ export default function RootLayout() {
           >
             <Tabs.Screen name="index" options={{ title: "Home" }} />
             <Tabs.Screen
-              name="(tabs)/About"
+              name="About"
               options={{ title: "About", headerShown: false }}
             />
             <Tabs.Screen
-              name="(tabs)/AllDoctors"
+              name="AllDoctors"
               options={{ title: "Doctors", headerShown: false }}
             />
             <Tabs.Screen
-              name="(tabs)/Contect"
+              name="Contect"
               options={{ title: "Contact", headerShown: false }}
             />
           </Tabs>

@@ -3,6 +3,8 @@ import General_physician from "@/assets/images/General_physician.png";
 import Gynecologist from "@/assets/images/Gynecologist.png";
 import Neurologist from "@/assets/images/Neurologist.png";
 import Pediatricians from "@/assets/images/Pediatricians.png";
+import About_Us from "@/assets/images/about_image.png";
+import Contact_Us from "@/assets/images/contact_image.png";
 import logo from "@/assets/images/logo.png";
 import Dermatologist from "../assets/images/Dermatologist.png";
 export const specialityData = [
@@ -34,4 +36,6 @@ export const specialityData = [
 
 export const assets = {
   logo,
+  About_Us,
+  Contact_Us,
 };

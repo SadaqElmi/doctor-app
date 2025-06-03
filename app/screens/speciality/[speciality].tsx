@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Toast from "react-native-toast-message";
@@ -22,11 +22,18 @@ type Doctor = {
   specialization: string;
 };
 
-const AllDoctors = () => {
+const Specaility = () => {
+  const { speciality } = useLocalSearchParams();
+  const router = useRouter();
   const [selectedSpecialist, setSelectedSpecialist] = useState("All");
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [showFilters, setShowFilters] = useState(false);
-  const router = useRouter();
+
+  useEffect(() => {
+    if (speciality) {
+      setSelectedSpecialist(decodeURIComponent(speciality as string));
+    }
+  }, [speciality]);
 
   useEffect(() => {
     axios
@@ -132,4 +139,4 @@ const AllDoctors = () => {
   );
 };
 
-export default AllDoctors;
+export default Specaility;

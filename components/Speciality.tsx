@@ -1,8 +1,10 @@
 import { specialityData } from "@/mockdata/assets";
+import { useRouter } from "expo-router";
 import React from "react";
-import { Image, Text, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
 const Speciality = () => {
+  const router = useRouter();
   return (
     <View className="flex items-center justify-center py-16 mb-16">
       <View className="flex flex-col gap-3 justify-center items-center w-full">
@@ -15,15 +17,21 @@ const Speciality = () => {
 
       <View className="flex-row flex-wrap justify-center items-center w-full gap-6 mt-10">
         {specialityData.map((item, index) => (
-          <View
+          <TouchableOpacity
             key={index}
+            onPress={() => {
+              router.push({
+                pathname: "/screens/speciality/[speciality]",
+                params: { speciality: item.speciality },
+              });
+            }}
             className="flex flex-col justify-center items-center"
           >
             <Image source={item.image} className="w-16 h-16 mb-2" />
             <Text className="text-sm font-light text-center">
               {item.speciality}
             </Text>
-          </View>
+          </TouchableOpacity>
         ))}
       </View>
     </View>

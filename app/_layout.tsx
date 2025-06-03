@@ -54,12 +54,12 @@ export default function RootLayout() {
           >
             <Tabs.Screen name="index" options={{ title: "Home" }} />
             <Tabs.Screen
-              name="About"
-              options={{ title: "About", headerShown: false }}
-            />
-            <Tabs.Screen
               name="AllDoctors"
               options={{ title: "Doctors", headerShown: false }}
+            />
+            <Tabs.Screen
+              name="About"
+              options={{ title: "About", headerShown: false }}
             />
             <Tabs.Screen
               name="Contect"

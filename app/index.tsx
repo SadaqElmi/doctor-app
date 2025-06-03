@@ -8,14 +8,14 @@ import "../global.css";
 
 export default function Index() {
   return (
-    <View>
-      <ScrollView>
+    <ScrollView>
+      <View>
         <HeroSection />
         <Speciality />
         <TopDoctors />
         <Book />
         <Footer />
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 }

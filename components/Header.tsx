@@ -1,14 +1,25 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import * as SecureStore from "expo-secure-store";
 import React, { useState } from "react";
 import { Image, TouchableOpacity, View } from "react-native";
 import { Menu } from "react-native-paper";
+import Toast from "react-native-toast-message";
 
 const Header = () => {
   const [visible, setVisible] = useState(false);
   const openMenu = () => setVisible(true);
   const closeMenu = () => setVisible(false);
   const router = useRouter();
+  const handleLogout = async () => {
+    await SecureStore.deleteItemAsync("userToken");
+    await SecureStore.deleteItemAsync("userData");
+    router.replace("/Login/Login");
+    Toast.show({
+      type: "success",
+      text1: "Logged out successfully",
+    });
+  };
 
   return (
     <View className="flex-row justify-between items-center  px-2 mt-10">
@@ -45,7 +56,13 @@ const Header = () => {
           title="Profile"
         />
         <Menu.Item onPress={() => {}} title="Settings" />
-        <Menu.Item onPress={() => {}} title="Logout" />
+        <Menu.Item
+          onPress={() => {
+            closeMenu();
+            handleLogout(); // ✅ now it's called
+          }}
+          title="Logout"
+        />
       </Menu>
     </View>
   );

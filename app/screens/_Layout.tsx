@@ -3,7 +3,7 @@ import * as SecureStore from "expo-secure-store";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
 import Toast from "react-native-toast-message";
-import "../global.css";
+import "../../global.css";
 
 export default function AuthLayout() {
   const router = useRouter();

@@ -72,6 +72,7 @@ const SignUp = () => {
         "https://appointment-doctor-six.vercel.app/api/auth/register",
         form
       );
+      setForm({ name: "", email: "", password: "" });
       Toast.show({
         type: "success",
         text1: "Registration Successful",

@@ -29,7 +29,7 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        "https://appointment-doctor-six.vercel.app/api/auth/callback/credentials",
+        "https://appointment-doctor-six.vercel.app/api/auth/Login",
         { email, password }
       );
 
@@ -40,12 +40,12 @@ const Login = () => {
           JSON.stringify(res.data.user)
         );
 
-        Toast.show({
-          type: "success",
-          text1: "Login successful",
-        });
+        Toast.show({ type: "success", text1: "Login successful" });
 
-        router.push("/singUp/SingUp");
+        setEmail("");
+        setPassword("");
+
+        router.replace("/Home");
       } else {
         throw new Error("Invalid response");
       }
@@ -114,7 +114,7 @@ const Login = () => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={() => router.push("/singUp/SingUp")}
+        onPress={() => router.push("/SingUp/SingUp")}
         style={{ marginTop: 20 }}
       >
         <Text style={{ textAlign: "center", color: "#5F6FFF" }}>

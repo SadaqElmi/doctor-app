@@ -55,7 +55,13 @@ const Header = () => {
           }}
           title="Profile"
         />
-        <Menu.Item onPress={() => {}} title="Settings" />
+        <Menu.Item
+          onPress={() => {
+            closeMenu();
+            router.push("/myAppointments/MyAppointments");
+          }}
+          title="My Appointment"
+        />
         <Menu.Item
           onPress={() => {
             closeMenu();

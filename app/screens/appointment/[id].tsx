@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import axios from "axios";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useEffect, useMemo, useState } from "react";
@@ -123,6 +124,7 @@ const Appointment = () => {
 
   return (
     <ScrollView className="p-4 bg-white">
+      <Header />
       {/* Doctor Header */}
       <View className="items-center mb-6">
         <Image

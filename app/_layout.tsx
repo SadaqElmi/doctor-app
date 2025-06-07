@@ -2,6 +2,7 @@ import { Slot, usePathname, useRouter } from "expo-router";
 import * as SecureStore from "expo-secure-store";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
+import { PaperProvider } from "react-native-paper";
 import Toast from "react-native-toast-message";
 import "../global.css";
 
@@ -44,8 +45,10 @@ export default function AuthLayout() {
 
   return (
     <>
-      <Slot />
-      <Toast />
+      <PaperProvider>
+        <Slot />
+        <Toast />
+      </PaperProvider>
     </>
   );
 }
